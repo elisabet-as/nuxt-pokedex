@@ -23,21 +23,19 @@
 </template>
 
 <script>
-import {mapState} from 'vuex';
 
 export default {
     name: 'Characters',
     data() {
         return {};
     },
-    created() {
-        this.getCharacters();
+    created() {},
+    computed: {
+        characters() {
+            this.$store.getters.characters
+        }
     },
-    computed: mapState(['characters']),
     methods: {
-        getCharacters() {
-            this.$store.dispatch('getCharacters');
-        },
         showPokemon(id) {
             this.$router.push(`/character/${id}`);
         }

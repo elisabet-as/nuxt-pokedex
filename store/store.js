@@ -9,18 +9,18 @@ new Vuex.Store({
         characters: []
     },
     mutations: {
-        saveCharacters: (state, characters) => state.characters = characters
-    },
-    actions: {
-        getCharacters: ({commit}, characters) => {
-            for (let i = 1; i <= 19; i++) {
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-                .then((result) =>{
-                    characters = result.data
-                })
-            }
-            characters.sort((a, b) => a.id - b.id)
-            commit('saveCharacters', characters)
+        getCharacters(state, characters) {
+            state.characters = characters
         }
     },
+    actions: {
+        getCharacters(context, characters) {
+            context.commit('getCharacters', characters)
+        }
+    },
+    getters: {
+        characters(state) {
+            return state.characters
+        }
+    }
 })
