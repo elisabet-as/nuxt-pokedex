@@ -32,7 +32,7 @@ export default {
     created() {},
     computed: {
         characters() {
-            this.$store.getters.characters
+            this.$store.state.characters
         }
     },
     methods: {
