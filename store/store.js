@@ -1,29 +1,25 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
 
-Vue.use(Vuex)
-const store = () => {
-    new Vuex.Store({
+Vue.use(Vuex);
+
+export const store = new Vuex.Store({
         state: {
             characters: []
+        },
+        actions: {
+            getCharacters(state, characters) {
+                return state.commit('getCharacters', characters)
+            }
         },
         mutations: {
             getCharacters(state, characters) {
                 state.characters = characters
             }
         },
-        // actions: {
-        //     getCharacters(context, characters) {
-        //         context.commit('getCharacters', characters)
-        //     }
-        // },
-        // getters: {
-        //     characters(state) {
-        //         return state.characters
-        //     }
-        // }
-    })
-}
-
-export default store
+        getters: {
+            characters(state) {
+                return state.characters
+            }
+        }
+    });
