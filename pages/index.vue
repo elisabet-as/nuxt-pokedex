@@ -20,7 +20,7 @@ export default {
     async fetch ({ store, params }) {
         let characters = []
 
-        for (let i = 1; i <= 19; i++) {
+        for (let i = 1; i <= 18; i++) {
             const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
             characters.push(result.data)
             store.dispatch('getCharacters', characters)
