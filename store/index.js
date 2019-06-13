@@ -1,7 +1,4 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex);
+export const strict = false
 
 export const state = () => ({
     characters: []
@@ -24,10 +21,3 @@ export const getters = {
         return state.characters
     }
 }
-
-new Vuex.Store({
-    state,
-    actions,
-    mutations,
-    getters
-});

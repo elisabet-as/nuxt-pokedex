@@ -17,20 +17,17 @@ export default {
         Characters
     },
     created() {},
-    fetch ({ store, params }) {
+    async fetch ({ store, params }) {
         let characters = []
-        // for (let i = 1; i <= 19; i++) {
-        //     const promises = new Promise((resolve, reject) => {
-            axios.get(`https://pokeapi.co/api/v2/pokemon/1`)
-            // })
-        // }
-        //     Promise.all(promises)
-        .then((result) => {
+
+        for (let i = 1; i <= 19; i++) {
+            const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
             characters.push(result.data)
             store.dispatch('getCharacters', characters)
-        })
-        // store.dispatch('getCharacters', characters)
+        }
     },
-    methods: {}
+    methods: {
+
+    }
 };
 </script>
