@@ -12,15 +12,15 @@
                         <h3 class="pokemon-info-name">
                             {{character.characterInfo.name}}
                         </h3>
-                        <!-- <p>
-                            {{isBaby}}
+                        <p>
+                            {{character.isBaby}}
                         </p>
                         <p v-if="showEvolvesFrom">
-                            {{evolvesFrom}}
+                            {{character.evolvesFrom}}
                         </p>
                         <p>
-                            {{evolvesTo}}
-                        </p> -->
+                            {{character.evolvesTo}}
+                        </p>
                     </div>
                     <div class="pokemon-info-img">
                         <img :src="character.characterImg" alt="character">
@@ -47,13 +47,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            // characterURL: '',
-            // characterImg: '',
-            // urlEvolutions: '',
-            // isBaby: '',
-            // evolvesFrom: '',
-            // showEvolvesFrom: true,
-            // evolvesTo: '',
+            showEvolvesFrom: true,
         }
     },
     created() {},
@@ -77,48 +71,13 @@ export default {
         }
     },
     methods: {
-        // async getCharacterAge() {
-        //     const result = await axios.get(this.characterURL.species.url)
-        //     const urlEvolutions = await result.data.evolution_chain.url
-        //     const evolvesFrom = await result.data.evolves_from_species
-        //     const isBaby = await result.data.is_baby
-        //     this.urlEvolutions = urlEvolutions
-        //     if (evolvesFrom == null) {
-        //         this.evolvesFrom = ''
-        //         this.showEvolvesFrom = false
-        //     } else {
-        //         this.evolvesFrom = 'Este pokemon evoluciona de ' + evolvesFrom.name
-        //         this.showEvolvesFrom = true
-        //     }
-        //     isBaby ? this.isBaby = 'Pokemon bebé' : this.isBaby = 'Pokemon adulto'
-        // },
-        //
-        // async getCharacterEvolutions() {
-        //     const result = await axios.get(this.urlEvolutions)
-        //     const evolutions = result.data.chain
-        //     const firstEvolution = result.data.chain.species.name
-        //     const getSecondEvolution = evolutions.evolves_to.map((evolution) => {
-        //         return evolution.species.name
-        //     })
-        //     const secondEvolution = getSecondEvolution.toString()
-        //     const getThirdEvolution = evolutions.evolves_to.map((finalEvolution) => {
-        //         if (finalEvolution.evolves_to.length == 0) {
-        //             return undefined
-        //         } else {
-        //             return finalEvolution.evolves_to[0].species.name
-        //         }
-        //     })
-        //
-        //     const thirdEvolution = getThirdEvolution.toString()
-        //
-        //     if (this.character.name == firstEvolution) {
-        //         this.evolvesTo = `Este Pokémon evoluciona a ${secondEvolution}`
-        //     } else if (this.character.name == secondEvolution) {
-        //         this.evolvesTo = `Este Pokémon evoluciona a ${thirdEvolution}`
-        //     } else if (this.character.name == thirdEvolution) {
-        //         this.evolvesTo = 'Este Pokémon no tiene evolución'
-        //     }
-        // },
+        isVisibleEvolvesFrom() {
+            if (character.evolvesFrom == null) {
+                this.showEvolvesFrom = false
+            } else {
+                this.showEvolvesFrom = true
+            }
+        },
 
         nextRoute(operation) {
             let nextCharacter;
