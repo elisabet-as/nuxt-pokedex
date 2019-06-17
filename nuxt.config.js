@@ -1,9 +1,16 @@
 import VuetifyLoaderPlugin from 'vuetify-loader/lib/plugin'
 import pkg from './package'
 
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/nuxt-pokedex/'
+  }
+} : {}
+
+
 export default {
     mode: 'universal',
-
+    ...routerBase,
     /*
     ** Headers of the page
     */
@@ -35,7 +42,7 @@ export default {
     css: [
         '~/assets/style/app.styl',
         '~assets/css/main.css'
-],
+    ],
 
     /*
     ** Plugins to load before mounting the App
