@@ -6,8 +6,8 @@ export default class Character extends Model {
   static fields () {
     return {
       id: this.increment(),
-      characterName: this.string(''),
-      characterImg: this.string(''),
+      name: this.string(''),
+      img: this.string(''),
       evolvesFrom: this.string(''),
       isBaby: this.string(''),
       evolvesTo: this.string('')

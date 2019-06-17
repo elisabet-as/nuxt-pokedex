@@ -23,12 +23,18 @@ export default {
 
         for (let i = 1; i <= 18; i++) {
             const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
-            Object.defineProperty(result.data, 'img', {
-                value: result.data.sprites.front_default
-            });
-            characters.push(result.data)
+            const id = result.data.id
+            const name = result.data.name
+            const img = result.data.sprites.front_default
+            const types = result.data.types
+            const character = {
+                id,
+                name,
+                img,
+                types
+            }
+            characters.push(character)
             Characters.create({ data: characters })
-            // store.dispatch('getCharacters', characters)
         }
     },
     methods: {}

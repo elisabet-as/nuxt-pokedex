@@ -7,10 +7,10 @@
         </v-layout>
         <v-layout class="row d-flex justify-center mb-5">
             <v-flex class="xs12 sm8 md6">
-                <v-card color="light" height="350px" class="d-flex align-center pa-5 my-4">
-                    <div class="pokemon-info-details info--text d-flex"  v-for="(character, id) in character"  :key="id">
+                <v-card color="light" height="350px" class="d-flex align-center pa-5 my-4" v-for="(character, id) in character"  :key="id">
+                    <div class="pokemon-info-details info--text d-flex">
                         <h3 class="pokemon-info-name">
-                            {{character.characterName}}
+                            {{character.name}}
                         </h3>
                         <p>
                             {{character.isBaby}}
@@ -23,7 +23,7 @@
                         </p>
                     </div>
                     <div class="pokemon-info-img">
-                        <img :src="character.characterImg" alt="character">
+                        <img :src="character.img" alt="character">
                     </div>
                 </v-card>
             </v-flex>
@@ -53,12 +53,6 @@ export default {
     },
     created() {},
     computed: {
-        // characters() {
-        //     return this.$store.getters.characters
-        // },
-        // character() {
-        //     return this.$store.getters.character
-        // },
         characters() {
             return this.$store.getters['entities/characters/all']()
         },

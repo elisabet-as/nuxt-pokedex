@@ -32,9 +32,6 @@ export default {
     },
     created() {},
     computed: {
-        // characters() {
-        //     return this.$store.getters.characters
-        // }
         characters() {
             return this.$store.getters['entities/characters/all']()
         }
