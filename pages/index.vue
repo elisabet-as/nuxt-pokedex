@@ -2,19 +2,20 @@
     <v-app class="medium">
         <v-content>
             <v-flex>
-                <Characters/>
+                <CharactersComponent/>
             </v-flex>
         </v-content>
     </v-app>
 </template>
 
 <script>
-import Characters from '~/components/Characters.vue'
-import axios from 'axios'
+import CharactersComponent from '~/components/CharactersComponent.vue';
+import Characters from '~/models/Characters'
+import axios from 'axios';
 
 export default {
     components: {
-        Characters
+        CharactersComponent
     },
     created() {},
     async fetch ({ store, params }) {
@@ -22,12 +23,14 @@ export default {
 
         for (let i = 1; i <= 18; i++) {
             const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
+            Object.defineProperty(result.data, 'img', {
+                value: result.data.sprites.front_default
+            });
             characters.push(result.data)
-            store.dispatch('getCharacters', characters)
+            Characters.create({ data: characters })
+            // store.dispatch('getCharacters', characters)
         }
     },
-    methods: {
-
-    }
+    methods: {}
 };
 </script>

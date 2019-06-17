@@ -8,9 +8,9 @@
         <v-layout class="row d-flex justify-center mb-5">
             <v-flex class="xs12 sm8 md6">
                 <v-card color="light" height="350px" class="d-flex align-center pa-5 my-4">
-                    <div class="pokemon-info-details info--text d-flex">
+                    <div class="pokemon-info-details info--text d-flex"  v-for="(character, id) in character"  :key="id">
                         <h3 class="pokemon-info-name">
-                            {{character.characterInfo.name}}
+                            {{character.characterName}}
                         </h3>
                         <p>
                             {{character.isBaby}}
@@ -41,9 +41,10 @@
 
 <script>
 import axios from 'axios';
+import Character from '~/models/Character'
 
 export default {
-    name: "Character",
+    name: "CharacterComponent",
     data() {
         return {
             id: this.$route.params.id,
@@ -52,11 +53,17 @@ export default {
     },
     created() {},
     computed: {
+        // characters() {
+        //     return this.$store.getters.characters
+        // },
+        // character() {
+        //     return this.$store.getters.character
+        // },
         characters() {
-            return this.$store.getters.characters
+            return this.$store.getters['entities/characters/all']()
         },
         character() {
-            return this.$store.getters.character
+            return this.$store.getters['entities/character/all']()
         },
         showBtnLastCharacter() {
             return parseInt(this.id) == 1 ? false : true

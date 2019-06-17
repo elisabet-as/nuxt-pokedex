@@ -5,7 +5,7 @@
             <v-flex v-for="(character, key) in characters" :key="key" @click="showPokemon(character.id)" class="xs12 sm6 md3">
                 <v-card height="230px" class="light px-4 py-2">
                     <div class="pokemon-img">
-                        <img :src="character.sprites.front_default" alt="character"/>
+                        <img :src="character.img" alt="character"/>
                     </div>
                     <p class="pokemon-name info--text">{{ character.name }}</p>
                     <ul class="pokemons-types info--text">
@@ -23,22 +23,26 @@
 </template>
 
 <script>
+import Characters from '~/models/Characters'
 
 export default {
-    name: 'Characters',
+    name: 'CharactersComponent',
     data() {
         return {};
     },
     created() {},
     computed: {
+        // characters() {
+        //     return this.$store.getters.characters
+        // }
         characters() {
-            return this.$store.getters.characters
+            return this.$store.getters['entities/characters/all']()
         }
     },
     methods: {
         showPokemon(id) {
-            this.$router.push(`/character/${id}`);
-        }
+            this.$router.push(`/character/${id}`)
+        },
     }
 };
 </script>
