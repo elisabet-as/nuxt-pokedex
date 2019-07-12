@@ -51,6 +51,18 @@ ul {
 
 .pokemon-info-name {
     text-transform: capitalize;
+    font-weight: bold;
     font-size: 28px;
     margin-bottom: 20px;
+}
+
+.input-details {
+    text-align: center;
+    padding: 10px;
+}
+
+.btn-add-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

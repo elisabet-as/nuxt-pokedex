@@ -18,6 +18,11 @@
                     </ul>
                 </v-card>
             </v-flex>
+            <v-flex class="xs12 sm6 md3 btn-add-card">
+                <v-btn fab outline color="secondary" class="d-flex" @click="createCard()">
+                    <v-icon center>add</v-icon>
+                </v-btn>
+            </v-flex>
         </v-layout>
     </v-container>
 </template>
@@ -40,6 +45,14 @@ export default {
         showPokemon(id) {
             this.$router.push(`/character/${id}`)
         },
+        createCard() {
+            console.log('hola')
+            Characters.insert({
+                data: {
+                    name: 'Pokémon nuevo'
+                }
+            })
+        }
     }
 };
 </script>
